@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.1"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+    
+     <factory>
+        <exception-handler-factory>br.com.cobra.exception.GeralFabricaExceptionHandler</exception-handler-factory>
+    </factory>
+    <managed-bean>
+        <managed-bean-name>loginBean</managed-bean-name>
+        <managed-bean-class>br.com.cobra.controle.LoginControle</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>cargoBean</managed-bean-name>
+        <managed-bean-class>br.com.cobra.controle.CargoControle</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>centroResponsabilidadeBean</managed-bean-name>
+        <managed-bean-class>br.com.cobra.controle.CentroResponsabilidadeControle</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>dotacaoBean</managed-bean-name>
+        <managed-bean-class>br.com.cobra.controle.DotacaoControle</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>dropdownBean</managed-bean-name>
+        <managed-bean-class>br.com.cobra.controle.DropDownMenuControle</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+</faces-config>

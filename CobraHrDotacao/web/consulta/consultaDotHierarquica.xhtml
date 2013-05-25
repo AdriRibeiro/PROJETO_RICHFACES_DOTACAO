@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <ui:composition template="#{pageContext.request.contextPath}/template/cobra.xhtml">
+        <ui:define name="content">
+            <h:form id="frmconsultaDotacao" rendered="#{loginBean.login.logado}">
+                <rich:dataTable id="dtHierarquia" 
+                                styleClass="width: 820px; height: 520px;position: absolute;left: 19.5%;top: 5.3%;"
+                                var="hierarquia"
+                                rows="#{campos.numerolinhaDataTable}"
+                                value="#{centroResponsabilidadeBean.todosHierarquia}"
+                                rendered="#{loginBean.login.logado}">
+                    <f:facet name="noData">
+                        <h:outputLabel value="#{campos.APPHR1002}" />
+                    </f:facet>
+                    <rich:column id="dtcolHierarquia" style="width: 25%;text-align:left;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoHierarquia}" class="align-left"/>
+                        </f:facet>
+                             <h:outputText value="#{hierarquia.caminho}"/>
+                    </rich:column>
+                    <rich:column id="dtNivel" style="width: 10%; text-align: center;">
+                        <f:facet name="header">
+                                <h:outputText value="#{campos.campoNIvel}"/>
+                        </f:facet>
+                        <h:outputText value="#{hierarquia.nivel}"/>
+                    </rich:column>
+                    <rich:column id="dtSigla"  style="width: 10%; text-align: left;">
+                        <f:facet name="header">
+                                <h:outputText value="#{campos.campoScrSigla}"/>
+                        </f:facet>
+                        <h:outputText value="#{hierarquia.sigla}"/>
+                    </rich:column>
+                    <rich:column id="dtDescricao" style="width: 45%; text-align: left;">
+                        <f:facet name="header">
+                                <h:outputText value="#{campos.campoDescricao}"/>
+                        </f:facet>
+                        <h:outputText value="#{hierarquia.descricao}"/>
+                    </rich:column>                    
+                    <rich:column id="dtDotacao" style="width: 10%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoDotacao}"/>
+                        </f:facet>
+                        <h:outputText value="#{hierarquia.dotacao}"/>
+                    </rich:column>
+                    <rich:column id="dtBloqueio" style="width: 10%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoBloqueio}"/>
+                        </f:facet>
+                        <h:outputText value="#{hierarquia.bloqueio}"/>
+                    </rich:column>
+                    <rich:column id="dtLotacao" style="width: 10%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoLotacao}"/>
+                        </f:facet>
+                        <h:outputText value="#{hierarquia.lotacao}"/>
+                    </rich:column>
+                    <f:facet name="footer">
+                        <rich:dataScroller id="dtSHierarquia" for="dtHierarquia"/>
+                    </f:facet>
+                </rich:dataTable>
+                <div align="center">
+                    <table >
+                        <tr>
+                            <td>
+                                <h:commandLink id="lnkNovo" styleClass="no-decor"
+                                               title="#{campos.BotaoNovo}" 
+                                               disabled="true"
+                                               action="#{centroResponsabilidadeBean.novaHierarquia()}">
+                                    <h:graphicImage id="graphAdd" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Add.png" 
+                                                    alt="#{campos.BotaoAdd}" 
+                                                    height="32" 
+                                                    width="32" />
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink id="lnkVoltar" 
+                                               styleClass="no-decor"
+                                               title="#{campos.BotaoVoltar}" 
+                                               immediate="true"
+                                               action="#{centroResponsabilidadeBean.retornarHierarquia()}">
+                                    <h:graphicImage id="graphLogoff"
+                                                    value="#{pageContext.request.contextPath}/imagens/final/LogOff.png"
+                                                    alt="#{campos.BotaoVoltar}" 
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink  id="lnkExcel" 
+                                                styleClass="no-decor"
+                                                title="#{campos.BotaoExcel}"
+                                                immediate="true"
+                                                action="#{centroResponsabilidadeBean.excelHierarquia()}">
+                                    <h:graphicImage id="graphExcel" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Excel.png"
+                                                    alt="#{campos.BotaoExcel}"
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink id="lnkAdobe" 
+                                               styleClass="no-decor"
+                                               title="#{campos.BotaoAdobe}" 
+                                               immediate="true"
+                                               action="#{centroResponsabilidadeBean.adobeHierarquia()}">
+                                    <h:graphicImage id="giAdobe" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Adobe.png"
+                                                    alt="#{campos.BotaoAdobe}" 
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink  id="lnkImpressao" 
+                                                styleClass="no-decor"
+                                                title="#{campos.BotaoImpressao}"
+                                                onclick="window.print();
+                                               return false;"
+                                                action="#{centroResponsabilidadeBean.impressaoHierarquia()}">
+                                    <h:graphicImage id="giImpressao" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Printer.png"
+                                                    alt="#{campos.BotaoImpressao}" 
+                                                    height="32" width="32"/>
+                                </h:commandLink>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

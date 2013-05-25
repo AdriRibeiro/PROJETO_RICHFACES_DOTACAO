@@ -1,0 +1,417 @@
+@media all {
+    label { display: block; margin-top: 10px; }
+    label.scrs{
+        display:inline;
+        color: #237097;
+        font-weight: normal;	
+    }
+    input[type=text], input[type=password], select{
+        font-size: 10px;
+        font-family: padrao, padraoB;
+        color: #237097;
+        background-color: #EDEDED;
+        border: 1px solid #A0CAF0;
+    }
+    .check{
+        font-size: 9px;
+    }
+
+    .botao1{
+        font-family: padrao, padraoB;
+        background-color: #0052AD;
+        color: #FFF;
+        border: 0;	
+        font-size: 9px;
+        text-transform: uppercase;
+        padding: 3px;
+        margin: 3px;
+        font-weight: bold;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    .botaoInibeExibe{
+        font-family: padrao, padraoB;
+        background-color: #0052AD;
+        color: #FFF;
+        border: 0;	
+        font-size: 9px;
+        text-transform: uppercase;
+        padding: 3px;
+        margin: 3px;
+        font-weight: bold;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        width: 90px;
+    }
+
+    .botao1Clicado{
+        font-family: padrao, padraoB;
+        background-color: #D3D6FF;
+        color: #237097;
+        border: 0;	
+        font-size: 9px;
+        text-transform: uppercase;
+        padding: 3px;
+        margin: 3px;
+        font-weight: bold;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        width: 90px;
+    }
+
+    div#sucesso, div#erro{
+        width: 60%;
+        float:none;
+        padding: 5px 10px 5px 50px;
+
+        background-repeat: no-repeat;
+        background-position: 10px center;
+
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;	
+    }	
+
+    div#sucesso{
+        background-color: #DFF2BF;
+        background-image:url('../imagens/sucesso.gif');
+    }
+
+    div#erro{
+        background-color: #FFBABA;
+        background-image:url('../imagens/erro.png');
+    }
+
+    label#erro { 
+        height:14px;
+        float: none; 
+        color: #D8000C; 
+        margin: 5px .5em 0 0; 
+        vertical-align: top; 
+    }
+
+    label#sucesso { 
+        height:14px;
+        float: none; 
+        color: #4F8A10; 
+        margin: 5px .5em 0 0; 
+        vertical-align: top; 
+    }
+
+    label.error { 
+        height:14px;
+        float: none; 
+        color: #ED7676; 
+        margin: 5px .5em 0 0; 
+        vertical-align: top; 
+    }
+
+    label.mensagem { 
+        height:14px;
+        float: none; 
+        color: #32CD99; 
+        margin: 5px .5em 0 0; 
+        vertical-align: top; 
+    }
+
+    .tituloPagina h1{						
+        font-family: zurchn, zurchnB;			
+        color: #057DC2;							
+        padding: 0px;  							
+        font-size: 14px; 						
+        border-bottom: 1px solid #057DC2; 		
+        text-transform: uppercase;				
+    }
+
+    .cadastrar, .lancamentos{	
+        padding: 0 10px 10px 20px;
+    }
+
+    .ajuda{
+        background-color: #E9E9E9;
+        /*color: #FFF;*/
+        width: 300px;
+        float:right;
+        margin-right: 300px;	
+        /*border: 1px solid black;*/
+        padding: 5px 10px;
+    }
+
+    .titulo h2 {							
+        font-family: zurchn, zurchnB;
+        color: #045E7F;							
+        text-align: left;						
+        font-size: 14px;						
+        text-transform: uppercase;	
+        background-color: #E9E9E9;
+        width: 100%;			
+    }
+
+    .label{															
+        color: #848484;							
+        text-transform: uppercase;			
+    }
+
+    .login{
+        top: 10px;
+        width:320px;
+        position: relative; /* propriedade top acima � definida em rela��o � div anterior (acesso_restrito)*/
+        margin: 0 auto;
+        font-weight: bold;
+    }
+
+    .login form{
+        float:left;
+    }
+
+    .login img{
+        width:180px;
+        height:100px;	
+    }
+
+    .cadastrar label{
+        font-weight: bold;
+    }
+
+    .lancamentos table{
+        text-align: center;	
+    }
+
+    .opcoes {
+        font-family: zurchn, zurchnB;
+        background-color: #007ac1;
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .opcoes ul{
+        width: 100%;
+        margin:0;
+        padding: 0;	
+    }
+    .opcoes li {
+        font-size: 10px;
+        font-weight: bold;
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        text-transform: uppercase;
+    }
+
+    .opcoes li a:hover {
+        color: #F2CA06;
+        text-decoration: underline;
+    }
+
+    .opcoes li a {
+        color: #FFFFFF;
+        text-decoration: none;	
+    }
+
+    #footer img {
+        float: right;
+        margin: 10px;
+    }
+
+    .negrito {
+        font-weight: bold;	
+    }
+
+    div.autorais {
+        float:right;
+        color: #002E96;
+        text-align: right;
+        font-size: 11px;
+        margin: 10px 0px 10px 10px;
+        position: relative;
+    }
+
+    #tituloPagina h1 {
+        font-size: 14px;
+        color: #057DC2;	
+        text-transform: uppercase;
+        border-bottom: 2px solid #057DC2;
+        padding: 0;
+    }
+
+    #div_faltas, #div_atrasos, #div_ferias, #div_licenca, #div_desligamento, #div_delegacao_temporaria, #div_scrs {
+        margin-bottom: 10px;   
+    }
+
+    #div_colaboradores{
+        width: 300px;	
+        float: right;
+    }
+
+    #msg img, .carregando {
+        width: 20px;
+        height: 15px;
+    }
+
+    #img_login .carregando {
+        width: 40px;
+        height: 30px;
+        margin: 30px;
+    }
+
+    #acesso_restrito {
+        padding: 20px;
+        text-align: justify;
+    }
+
+    #divInibeExibe {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        padding: 5px;
+    }
+    .auto-complete {
+        text-transform: uppercase;
+    }
+
+    /*** PERSONALIZA��O DO INPUT FILE *****/
+    .file-wrapper {
+        cursor: pointer;
+        display: inline-block;
+        overflow: hidden;
+        position: relative;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    .file-wrapper input {
+        cursor: pointer;
+        font-size: 100px;
+        height: 100%;
+        filter: alpha(opacity=1);
+        -moz-opacity: 0.01;
+        opacity: 0.01;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .file-wrapper .button {
+        background-image: url("../imagens/csv.png");
+        background-repeat: no-repeat;
+        color: #045E7F;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 9px;
+        font-weight: bold;
+        margin-right: 10px;
+        padding: 4px 35px;
+    }	
+
+    A:link {text-decoration: none; color: red;}
+    A:visited {text-decoration: none}
+    A:active {text-decoration: none}
+    A:hover {text-decoration: underline; color: blue;}
+
+
+    /***** MENU ***/
+
+
+    #glb-menu{
+        height: 40px;
+    }
+
+    #glb-menu ul {
+        list-style: none;
+    }
+
+    /**** TABELAS ****/
+    .even {
+        background-color: #FFFAD8;	
+    }
+
+    .odd {
+        background-color: #FFF;
+    }
+
+    a.no-decor>img {
+        border: none;
+    }
+    /* IMPORTA��O DAS FONTES NECESS�RIAS */
+    body{
+        margin:0;	/*reset das margem e padding */
+        padding: 0;
+        font-size:11px;
+        font-family: padrao, padraoB;
+        color: #237097;
+        text-transform: uppercase;
+    }
+
+    div#container{
+        width: 100%;
+        margin:0px auto;
+        /*border:solid 1px #CCC;
+        border-top:none;*/
+    }
+
+    div#header{
+        height:80px;	
+        background-image: url("#{facesContext.externalContext.requestContextPath}/imagens/final/img_fundo_topo.jpg"); background-repeat: repeat-x;
+        text-align: right;
+        color: #002E96;
+        padding-right:5px;
+        padding-top: 5px;
+    }
+
+    #header img{
+        float:left;	
+    }
+
+
+    topBar{
+        height: 40px;
+        background-image: url("#{facesContext.externalContext.requestContextPath}/imagens/final/img_fundo_menutopo_horizontal.jpg");
+        background-repeat: repeat-x;
+        border-top:1px solid #F5D40D;
+        *padding-top: 12px;		/* hack para consertar bug no IE - aten��o: O CSS n�o valida */
+    }
+
+    div#menu{
+        float:left;
+    }
+
+    div#content{
+        float:left;
+        width:742px;
+        width: 95%;
+        min-height: 500px;
+        padding:20px;
+        padding-bottom:0px;
+    }
+
+    div#footer{
+        background-image: url("#{facesContext.externalContext.requestContextPath}/imagens/final/img_fundo_rodape.jpg");
+        background-repeat: repeat-x;
+        height: 40px;
+        padding: 5px;
+    }
+    .panellogin {
+        width:300px;
+        height: 150px; 
+        margin: auto;
+        position: absolute; 
+        border-radius: 15px;
+        top: 50%; 
+        left: 50%; 
+        backgroud: #E0E0E0;
+        margin-top: -100px; 
+        margin-left: -150px;
+        border-radius: 15px;
+    }    
+
+    .clmsg{
+
+    }
+}
+@media print {
+    body                    { background-color: white }
+    h1                      { color: #008844}
+    p     					{ font-size: 14pt;color: #4488aa; font-family: "times new roman", times, serif }
+}

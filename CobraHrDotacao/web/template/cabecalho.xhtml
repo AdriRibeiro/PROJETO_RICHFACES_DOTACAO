@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<ui:composition>
+    <ul id="cabecalhoheader" > 
+        <h:form id="frmCabLog">
+        <h:panelGroup id="pngCabecalho" rendered="#{loginBean.login.cond == 0}">
+           <h:outputText value="#{campos.MensagemBoasVindas},"/>   
+           <h:commandLink value="#{loginBean.login.logon}" 
+                          style="color: black; font-size: 14px"
+                       action="#{loginBean.logout()}"/>
+           <h:outputText value="  #{campos.VERSAO}"/>   
+        </h:panelGroup>
+       </h:form>
+    </ul>
+</ui:composition>
+</html>

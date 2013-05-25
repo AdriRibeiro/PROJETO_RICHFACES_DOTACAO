@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <ui:composition template="#{pageContext.request.contextPath}/template/cobra.xhtml">
+        <ui:define name="content">
+            '
+            <h:form id="frmCentro">
+                <rich:dataTable id="dtCentroResponsabilidade"
+                                rendered="#{loginBean.login.logado}"
+                                value="#{centroResponsabilidadeBean.todos}"
+                                var="centroResponsabilidadeTodos"
+                                rows="#{campos.numerolinhaDataTable}"
+                                columnClasses="colCodigo,colSigla,colDescricao,colDataInicio,colDataTermino,colDelete">
+                    
+                    <rich:column style="width: 10%; text-align: center;"
+                                 filterValue="#{centroResponsabilidadeBean.filtroSubcr}"
+                                 filterExpression="#{fn:containsIgnoreCase(centroResponsabilidadeTodos.scr,centroResponsabilidadeBean.filtroSubcr)}">
+                                 
+                        <f:facet name="header">
+                            <h:panelGroup>
+                                <h:outputText value="#{campos.campoScr}"/>
+                                <br></br>
+                                <h:inputText value="#{centroResponsabilidadeBean.filtroSubcr}" size ="10" style="font-size: 11px;" >
+                                  <a4j:ajax event="blur" render="dtCentroResponsabilidade" execute="@this" />                                    
+                                  <!--    <f:validateRegex pattern="(^[1-9]{6}$)" /> -->   
+                                </h:inputText>
+                            </h:panelGroup>
+                        </f:facet>
+                        <h:outputText value="#{centroResponsabilidadeTodos.scr}"/>
+                    </rich:column>
+                    
+                    <rich:column style="width: 15%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.camposcrSigla}"/>
+                        </f:facet>
+                        <h:outputText value="#{centroResponsabilidadeTodos.scrSigla}"/>
+                    </rich:column>
+                    
+                    <rich:column style="width: 55%; text-align: left;"
+                         filterValue="#{centroResponsabilidadeBean.filtroDesc}"                         
+                         filterExpression="#{fn:containsIgnoreCase(centroResponsabilidadeTodos.descricao,centroResponsabilidadeBean.filtroDesc)}">
+                        <f:facet name="header">                           
+                            <h:outputText value="#{campos.campoDescricao}"/>
+                            <br></br>
+                            <h:panelGroup>
+                                <h:inputText value="#{centroResponsabilidadeBean.filtroDesc}" size="50" style="font-size: 11px;">
+                                    <a4j:ajax event="blur" render="dtCentroResponsabilidade" execute="@this" />
+                                </h:inputText>
+                            </h:panelGroup>
+                        </f:facet>
+                        <h:outputText value="#{centroResponsabilidadeTodos.descricao}"/>
+                    </rich:column>
+                    
+                    <rich:column style="width: 10%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoDataInicio}"/>
+                        </f:facet>
+                        <h:outputText value="#{centroResponsabilidadeTodos.dataInicio}">
+                            <f:convertDateTime pattern="#{campos.Datapattern}" 
+                                               timeZone="#{campos.timeZone}" 
+                                               dateStyle="#{campos.dateStyle}"/>
+                        </h:outputText>
+                    </rich:column>
+                    <rich:column style="width: 10%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoDataTermino}"/>
+                        </f:facet>
+                        <h:outputText value="#{centroResponsabilidadeTodos.dataTermino}">
+                            <f:convertDateTime pattern="#{campos.Datapattern}" 
+                                               timeZone="#{campos.timeZone}" 
+                                               dateStyle="#{campos.dateStyle}"/>
+                        </h:outputText>
+                    </rich:column>
+                    <rich:column style="width: 5%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoExcluir}"/>
+                        </f:facet>
+                        <h:commandLink id="idExcluir" 
+                                       action="#{centroResponsabilidadeBean.excluir}" 
+                                       disabled="true">
+                            <h:graphicImage id="image"
+                                            alt="Excluir" 
+                                            value="#{pageContext.request.contextPath}/imagens/informacao/del.gif">
+                            </h:graphicImage>
+                        </h:commandLink>
+                    </rich:column>
+                    <f:facet name="footer">
+                        <rich:dataScroller  id="dsCentroResponsabilidade" 
+                                            for="dtCentroResponsabilidade"/>
+                    </f:facet>
+                </rich:dataTable>
+                <div align="center">
+                    <table >
+                        <tr>
+                            <td>
+                                <h:commandLink id="lnkNovo" 
+                                               styleClass="no-decor"
+                                               title="#{campos.BotaoNovo}" 
+                                               immediate="true"
+                                               action="#{centroResponsabilidadeBean.novoCentroResponsabilidade()}"
+                                               disabled="true">
+                                    <h:graphicImage id="graphAdd"
+                                                    title="#{campos.BotaoAdd}" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Add.png" 
+                                                    alt="#{campos.BotaoAdd}" 
+                                                    height="32" 
+                                                    width="32" />
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink id="lnkVoltar" 
+                                               styleClass="no-decor"
+                                               title="#{campos.BotaoVoltar}" 
+                                               immediate="true"
+                                               action="#{centroResponsabilidadeBean.retornarCentroResponsabilidade()}"
+                                               disabled="false">
+                                    <h:graphicImage id="graphLogoff"
+                                                    transient="#{campos.BotaoVoltar}"
+                                                    value="#{pageContext.request.contextPath}/imagens/final/LogOff.png"
+                                                    alt="#{campos.BotaoVoltar}" 
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink  id="lnkExcel" 
+                                                styleClass="no-decor"
+                                                title="#{campos.BotaoExcel}"
+                                                immediate="true"
+                                                action="#{centroResponsabilidadeBean.excelCentroResponsabilidade()}">
+                                    <h:graphicImage id="graphExcel" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Excel.png"
+                                                    alt="#{campos.BotaoExcel}"
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink id="lnkAdobe" 
+                                               styleClass="no-decor"
+                                               title="#{campos.BotaoAdobe}" 
+                                               immediate="true"
+                                               action="#{centroResponsabilidadeBean.adobeCentroResponsabilidade()}"
+                                               disabled="false">
+                                    <h:graphicImage id="giAdobe" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Adobe.png"
+                                                    alt="#{campos.BotaoAdobe}" 
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink  id="lnkImpressao" 
+                                                styleClass="no-decor"
+                                                title="#{campos.BotaoImpressao}"
+                                                action="#{centroResponsabilidadeBean.impressaoCentroResponsabilidade()}"
+                                                onclick="window.print(); return false;"
+                                                disabled="true">
+                                    <h:graphicImage id="giImpressao" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Printer.png"
+                                                    alt="#{campos.BotaoImpressao}" 
+                                                    height="32" width="32"/>
+                                </h:commandLink>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

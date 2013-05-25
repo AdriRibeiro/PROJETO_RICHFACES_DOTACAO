@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich" 
+      xmlns:a4j="http://richfaces.org/a4j">
+    <ui:composition template="#{pageContext.request.contextPath}/template/cobra.xhtml">
+        <ui:define name="topBar">
+            <h:form id="frmmenu">
+                <rich:toolbar id="tlbDrop" height="28px" rendered="#{loginBean.login.logado}" styleClass="menuBar">
+                    <rich:dropDownMenu mode="ajax" id="tlbDropMenu"> 
+                        <f:facet name="label">
+                            <h:panelGroup>
+                                <h:outputText value="#{campos.MenuArquivo}" />
+                            </h:panelGroup>
+                        </f:facet>
+                        <rich:menuItem  id="exit"
+                                        label="#{campos.MenuSair}"
+                                        action="#{dropdownBean.doExit()}" 
+                                        icon="#{pageContext.request.contextPath}/imagens/final/application_exit.gif"/>
+                    </rich:dropDownMenu>
+
+                    <rich:dropDownMenu>
+                        <f:facet name="label">
+                            <h:panelGrid cellpadding="0" cellspacing="0" 
+                                         columns="2">
+                                <h:outputText value="#{campos.campoConsulta}" />
+                            </h:panelGrid>
+                        </f:facet>
+                        
+                        <rich:menuItem label="#{campos.campoScr}" 
+                                       action="#{dropdownBean.doSubCr()}" 
+                                       icon="#{pageContext.request.contextPath}/imagens/final/myspace.ico"/>
+                        <rich:menuSeparator id="menuSeparator11" />
+                        <rich:menuItem label="#{campos.campoCargo}" 
+                                       action="#{dropdownBean.doCargo()}" 
+                                       icon="#{pageContext.request.contextPath}/imagens/final/person.ico" />
+                        <rich:menuSeparator id="menuSeparator12" />
+                        <rich:menuItem label="#{campos.campoDotacaoHierarquica}" 
+                                       icon="#{pageContext.request.contextPath}/imagens/final/Hierarquia.ico" 
+                                       action="#{dropdownBean.doDotacaoHierarquica()}" />
+                        
+                    </rich:dropDownMenu>                
+                    <rich:dropDownMenu>
+                        <f:facet name="label">
+                            <h:panelGroup>
+                                <h:outputText value="#{campos.campoCadastro}" />
+                            </h:panelGroup>
+                        </f:facet>
+                        <rich:menuItem label="#{campos.campoDotacao}" 
+                                       action="#{dropdownBean.doDotacao()}" 
+                                       icon="#{pageContext.request.contextPath}/imagens/final/dotacao.ico"/>
+                    </rich:dropDownMenu>
+                </rich:toolbar>
+            </h:form>                
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,104 @@
+@media print {
+    body { font-size: 10pt }
+}
+@media screen {
+    html {
+        height: 100%;
+    }
+    a.no-decor>img {
+        border: none;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        /*background: #94aebc url('#{facesContext.externalContext.requestContextPath}/imagens/img_fundo_topo.jpg') left bottom repeat; */
+        background: #FFFF99;
+        font: normal 12px "Lucida Sans Unicode", "Lucida Grande", Geneva, Verdana, Arial, sans-serif;
+        height: 100%;
+    }
+    fieldset {
+        margin: 0;
+    }
+    p {
+        margin: 0;
+        padding: 0 0 10px;
+    }
+    #pagina {
+        margin: 0 auto;
+        width: 987px;
+    }
+    #cabecalho {
+        background: url('#{facesContext.externalContext.requestContextPath}/imagens/banner.jpg') no-repeat top left;
+        width: 779px; 
+        height: 28px;
+        border: solid 1px #000000; 
+        position: absolute; 
+        left: 19.5%;
+        top: 1%
+    }
+    #menuBar {
+        width: 779px; 
+        height: 28px;
+        border: solid 1px #000000; 
+        position: absolute; 
+        left: 19.5%;
+        top: 6%
+    }
+    .panellogin {
+        width:250px;
+        height: 120px; 
+        position: absolute; 
+        top: 50%; 
+        left: 50%; 
+        backgroud: #f7f7f7;
+        margin-top: -100px; 
+        margin-left: -150px;
+    }
+    #cabecalho .logo {
+        float: left;
+        margin-left: 7px;
+        text-decoration: none;
+    }
+
+    #cabecalho .logo img {
+        border: none;
+    }
+    .topo {width: 779px; height: 28px;border: solid 1px #000000; position: absolute; left: 19.5%;top: 5.2%;}
+    .corpo {width: 779px;height: 520px;border: solid 1px #000000;position: absolute;left: 19.5%;top: 10.3%;}
+    .rodape {width: 779px;height: 40px;border: solid 1px #000000;position: absolute; left: 19.5%;top: 93%;font-weight: bold; text-align: center; color: #FF0000;font-family: arial, helvetica, sans-serif;font-size: 6pt;}
+    .zebrapar               { background-color: #CCE0EB; color: #000000;}
+    .zebraimpar             { background-color: #E5EFF5; color: #000000;}
+    .align-right            { text-align:right;}
+    .align-center           { text-align:center; }
+    .align-justify          { text-align:justify; }
+    .align-left             { text-align:left; }
+    td.intervalo            { height: 10px; width: 30px; }
+    .footer{
+        background-image: url('#{facesContext.externalContext.requestContextPath}/imagens/img_fundo_rodape.jpg');
+        background-repeat: repeat-x;
+        text-align:center;
+        padding: 5px;
+        width: 779px;
+        height: 40px;
+        border: solid 1px #000000;
+        position: absolute; 
+        left: 19.5%;top: 93%;
+        font-family: arial, helvetica, sans-serif;
+        font-size: 6pt;
+        color: #FF0000;
+    }
+    .header{
+        height:80px;	
+        background-image: url("#{facesContext.externalContext.requestContextPath}/imagens/img_fundo_topo.jpg"); background-repeat: repeat-x;
+        color: #002E96;
+        padding-right:5px;
+        padding-top: 5px;
+    }
+    .topBar{
+        height: 40px;
+        background-image: url("#{facesContext.externalContext.requestContextPath}/imagens/img_fundo_menutopo_horizontal.jpg");
+        background-repeat: repeat-x;
+        border-top:1px solid #F5D40D;
+        *padding-top: 12px;		/* hack para consertar bug no IE - aten��o: O CSS n�o valida */
+    }
+}

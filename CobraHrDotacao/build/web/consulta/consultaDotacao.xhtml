@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <ui:composition template="#{pageContext.request.contextPath}/template/cobra.xhtml">
+        <ui:define name="content">
+            <a4j:status onstart="#{rich:component('popPanel')}.show()" 
+                        onstop="#{rich:component('popPanel')}.hide()" />
+            <h:form id="frmconsultaDotacao" rendered="#{loginBean.login.logado}">
+                <rich:dataTable id="dTDotacao" 
+                                styleClass="width: 820px; height: 520px;position: absolute;left: 19.5%;top: 5.3%;"
+                                var="dotacao"
+                                iterationStatusVar="itStvr"
+                                columnClasses="align-center,align-left,align-left,align-left,align-center,align-center,align-center,align-center"
+                                rows="#{campos.numerolinhaDataTable}"
+                                value="#{dotacaoBean.todos}"
+                                rendered="#{loginBean.login.logado}">
+                    <f:facet name="noData">
+                        <h:outputLabel value="#{campos.APPHR1002}" />
+                    </f:facet>
+                    <rich:column id="dtcolCodigo" style="width: 5%;text-align:center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoID}" class="align-center"/>
+                        </f:facet>
+                        <h:commandLink action="#{dotacaoBean.editar()}"
+                                       id="cmlDotacaoId"
+                                       title="#{campos.MensagemParaEditar}"
+                                       value ="#{itStvr.index + 1}"/>
+                    </rich:column>
+                    <rich:column id="dtScr"  
+                                 style="width: 10%; text-align: center;"
+                                 filterValue="#{dotacaoBean.scrFiltro}"
+                                 filterExpression="#{fn:containsIgnoreCase(dotacao.centroResponsabilidade.scr,dotacaoBean.scrFiltro)}">
+                        <f:facet name="header">
+                            <h:panelGroup>
+                                <h:outputText value="#{campos.campoScr}"/>
+                                <br></br>
+                                <h:inputText value="#{dotacaoBean.scrFiltro}" size="10">
+                                    <a4j:ajax event="blur" render="dTDotacao" execute="@this" />
+                                </h:inputText>
+                            </h:panelGroup>
+                        </f:facet>
+                        <h:outputText value="#{dotacao.centroResponsabilidade.scr}"/>
+                    </rich:column>
+                    <rich:column id="dtSigla"  
+                                 style="width: 10%; text-align: left;"
+                                 filterValue="#{dotacaoBean.siglaFiltro}"
+                                 filterExpression="#{fn:containsIgnoreCase(dotacao.centroResponsabilidade.scrSigla,dotacaoBean.siglaFiltro)}">
+                        <f:facet name="header">
+                            <h:panelGroup>
+                                <h:outputText value="#{campos.campoScrSigla}"/>
+                                <br></br>
+                                <h:inputText value="#{dotacaoBean.siglaFiltro}" size="10">
+                                    <a4j:ajax event="blur" render="dTDotacao" execute="@this" />
+                                </h:inputText>
+                            </h:panelGroup>
+                        </f:facet>
+                        <h:outputText value="#{dotacao.centroResponsabilidade.scrSigla}"/>
+                    </rich:column>
+                    <rich:column id="dtDescricao"  
+                                 style="width: 55%; text-align: left;"
+                                 filterValue="#{dotacaoBean.descricaoFiltro}"
+                                 filterExpression="#{fn:containsIgnoreCase(dotacao.centroResponsabilidade.descricao,dotacaoBean.descricaoFiltro)}">
+                        <f:facet name="header">
+                            <h:panelGroup>
+                                <h:outputText value="#{campos.campoDescricao}"/>
+                                <br></br>
+                                <h:inputText value="#{dotacaoBean.descricaoFiltro}" size="50">
+                                    <a4j:ajax event="blur" render="dTDotacao" execute="@this" />
+                                </h:inputText>
+
+                            </h:panelGroup>
+                        </f:facet>
+                        <h:outputText value="#{dotacao.centroResponsabilidade.descricao}"/>
+                    </rich:column>                    
+                    <rich:column id="dtCargo" style="width: 30%; text-align: left;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoCargo}"/>
+                        </f:facet>
+                        <h:outputText value="#{dotacao.cargo.descricao}"/>
+                    </rich:column>
+                    <rich:column id="intDotacao" style="width: 10%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoDotacao}"/>
+                        </f:facet>
+                        <h:outputText value="#{dotacao.dotacao}"/>
+                    </rich:column>
+                    <rich:column id="intBloqueio" style="width: 10%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoBloqueio}"/>
+                        </f:facet>
+                        <h:outputText value="#{dotacao.bloqueio}"/>
+                    </rich:column>
+                    <rich:column id="intLotacao" style="width: 10%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoLotacao}"/>
+                        </f:facet>
+                        <h:outputText value="#{dotacao.lotacao}"/>
+                    </rich:column>
+                    <rich:column id="intVagas" style="width: 10%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoVagas}"/>
+                        </f:facet>
+                        <h:outputText value="#{dotacao.dotacao - dotacao.lotacao - dotacao.bloqueio}"/>
+                    </rich:column>                    
+                    <rich:column style="width: 5%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoExcluir}"/>
+                        </f:facet>
+                        <h:commandLink action="#{dotacaoBean.excluir()}"
+                                       onclick="if (!confirm('Confirma exclusão Lógica ?')) return false"
+                                       styleClass="no-decor">
+                            <h:graphicImage id="imageExcluir" 
+                                            alt="Excluir"
+                                            value="#{pageContext.request.contextPath}/imagens/final/del.gif">
+                            </h:graphicImage>
+                        </h:commandLink>
+                    </rich:column>
+                    <rich:column style="width: 5%; text-align: center;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoHistorico}"/>
+                        </f:facet>
+                        <a4j:commandLink styleClass="no-decor"
+                                         render="dTDotHistorico" 
+                                         execute="@this"
+                                         oncomplete="#{rich:component('histPanel')}.show()">
+                            <h:graphicImage id="imageHist" 
+                                            styleClass="no-decor"
+                                            alt="Historico"
+                                            value="#{pageContext.request.contextPath}/imagens/final/filter.gif">
+                            </h:graphicImage>
+                            <a4j:param value="#{itStvr.index}" assignTo="#{dotacaoBean.linhaCorrente}" />
+                            <f:setPropertyActionListener target="#{dotacaoBean.dotacaoHistorico}" 
+                                                         value="#{dotacao}" />
+                        </a4j:commandLink>
+                    </rich:column>
+                    <f:facet name="footer">
+                        <rich:dataScroller id="dtSDotacao" for="dTDotacao"/>
+                    </f:facet>
+                </rich:dataTable>
+                <rich:popupPanel id="popPanel" 
+                                 autosized="true">
+                    <h:graphicImage alt="ai" 
+                                    value="#{pageContext.request.contextPath}/imagens/final/ai.gif"/>
+                    #{campos.campoAguarde}
+                </rich:popupPanel>
+                <rich:popupPanel id="histPanel"
+                                 header="${campos.campoHistorico}" 
+                                 domElementAttachment="parent" 
+                                 width="600" height="250">
+                    <rich:dataTable id="dTDotHistorico" 
+                                    styleClass="width: 1020px; height: 520px;position: absolute;left: 19.5%;top: 5.3%;"
+                                    var="dotHistorico"
+                                    rows="#{campos.numerolinhaDataTable}"
+                                    value="#{dotacaoBean.historicoTodos}">
+                        <f:facet name="noData">
+                            <h:outputLabel value="#{campos.APPHR1003}" />
+                        </f:facet>
+                        <rich:column id="dtHistEffectiveStart" style="width: 20%;">
+                            <f:facet name="header">
+                                <h:outputText value="#{campos.campoDataInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{dotHistorico.effectiveStartDate}">
+                                <f:convertDateTime pattern="dd/MM/YYYY" 
+                                                   timeZone="#{campos.timeZone}" 
+                                                   dateStyle="#{campos.dateStyle}"/>
+                            </h:outputText>
+                        </rich:column>
+                        <rich:column id="dtHistEffectiveEnd" style="width: 20%;">
+                            <f:facet name="header">
+                                <h:outputText value="#{campos.campoDataTermino}"/>
+                            </f:facet>
+                            <h:outputText value="#{dotHistorico.effectiveEndDate}">
+                                <f:convertDateTime pattern="dd/MM/YYYY" 
+                                                   timeZone="#{campos.timeZone}" 
+                                                   dateStyle="#{campos.dateStyle}"/>
+                            </h:outputText>
+                        </rich:column>
+                        <rich:column id="dtHistDotacao" style="width: 5%;">
+                            <f:facet name="header">
+                                <h:outputText value="#{campos.campoDotacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{dotHistorico.dotacao}"/>
+                        </rich:column>
+                        <rich:column id="dtHistBloqueio" style="width: 5%;">
+                            <f:facet name="header">
+                                <h:outputText value="#{campos.campoBloqueio}"/>
+                            </f:facet>
+                            <h:outputText value="#{dotHistorico.bloqueio}"/>
+                        </rich:column>            
+                        <rich:column id="dtHistCriadoPor" style="width: 50%;">
+                            <f:facet name="header">
+                                <h:outputText value="#{campos.campoUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{dotHistorico.criadoPor.nome}"/>
+                        </rich:column>
+                    </rich:dataTable>
+                    <a4j:commandButton value="Cancel" 
+                                       onclick="#{rich:component('histPanel')}.hide();
+                                               return false;" />
+
+                </rich:popupPanel>
+                <div align="center">
+                    <table >
+                        <tr>
+                            <td>
+                                <h:commandLink id="lnkNovo" styleClass="no-decor"
+                                               title="#{campos.BotaoNovo}" 
+                                               action="#{dotacaoBean.novaDotacao()}">
+                                    <h:graphicImage id="graphAdd" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Add.png" 
+                                                    alt="#{campos.BotaoAdd}" 
+                                                    height="32" 
+                                                    width="32" />
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink id="lnkVoltar" 
+                                               styleClass="no-decor"
+                                               title="#{campos.BotaoVoltar}" 
+                                               immediate="true"
+                                               action="#{dotacaoBean.retornarDotacao()}">
+                                    <h:graphicImage id="graphLogoff"
+                                                    value="#{pageContext.request.contextPath}/imagens/final/LogOff.png"
+                                                    alt="#{campos.BotaoVoltar}" 
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink  id="lnkExcel" 
+                                                styleClass="no-decor"
+                                                title="#{campos.BotaoExcel}"
+                                                immediate="true"
+                                                action="#{dotacaoBean.excelDotacao()}">
+                                    <h:graphicImage id="graphExcel" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Excel.png"
+                                                    alt="#{campos.BotaoExcel}"
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink id="lnkAdobe" 
+                                               styleClass="no-decor"
+                                               title="#{campos.BotaoAdobe}" 
+                                               immediate="true"
+                                               action="#{dotacaoBean.adobeDotacao()}">
+                                    <h:graphicImage id="giAdobe" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Adobe.png"
+                                                    alt="#{campos.BotaoAdobe}" 
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink  id="lnkImpressao" 
+                                                styleClass="no-decor"
+                                                title="#{campos.BotaoImpressao}"
+                                                onclick="window.print();
+                                               return false;"
+                                                action="#{dotacaoBean.impressaoDotacao()}">
+                                    <h:graphicImage id="giImpressao" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Printer.png"
+                                                    alt="#{campos.BotaoImpressao}" 
+                                                    height="32" width="32"/>
+                                </h:commandLink>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

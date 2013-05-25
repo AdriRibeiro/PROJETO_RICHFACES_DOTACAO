@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <ui:composition template="#{pageContext.request.contextPath}/template/cobra.xhtml">
+        <ui:define name="content">
+            <h:form id="formCargo">
+                <rich:dataTable id="dtCargo" 
+                                rendered="#{loginBean.login.logado}"
+                                value="#{cargoBean.todos}"
+                                var="cargos"
+                                rows="#{campos.numerolinhaDataTable}">
+                    <rich:column id="dtcolCodigo" style="width:300px; text-align: left;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoCodigoCargo}"/>
+                        </f:facet>
+                        <h:outputText value="#{cargos.codigo}"/>
+                    </rich:column>
+                    <rich:column id="dtcolDescricao" style="width:1000px; text-align: left;">
+                        <f:facet name="header">
+                            <h:outputText value="#{campos.campoDescricaoCargo}"/>
+                        </f:facet>
+                        <h:outputText value="#{cargos.descricao}"/>
+                    </rich:column>                    
+                    <f:facet name="footer">
+                        <rich:dataScroller  id="dsCargos" for="dtCargo"/>
+                    </f:facet>
+                </rich:dataTable>
+                <div align="center">
+                    <table >
+                        <tr>
+                            <td>
+                                <h:commandLink id="lnkNovo" styleClass="no-decor"
+                                               title="#{campos.BotaoNovo}" 
+                                               immediate="true"
+                                               action="#{cargoBean.novoCargo()}"
+                                               disabled="true">
+                                    <h:graphicImage id="graphAdd"
+                                                    title="#{campos.BotaoAdd}" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Add.png" 
+                                                    alt="#{campos.BotaoAdd}" 
+                                                    height="32" 
+                                                    width="32" />
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink id="lnkVoltar" styleClass="no-decor"
+                                               title="#{campos.BotaoVoltar}" 
+                                               immediate="true"
+                                               action="#{cargoBean.retornarCargo()}"
+                                               disabled="false">
+                                    <h:graphicImage id="graphLogoff"
+                                                    transient="#{campos.BotaoVoltar}"
+                                                    value="#{pageContext.request.contextPath}/imagens/final/LogOff.png"
+                                                    alt="#{campos.BotaoVoltar}" 
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink  id="lnkExcel" styleClass="no-decor"
+                                                title="#{campos.BotaoExcel}"
+                                                immediate="true"
+                                                action="#{cargoBean.excelCargo()}"
+                                                >
+                                    <h:graphicImage id="graphExcel" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Excel.png"
+                                                    alt="#{campos.BotaoExcel}"
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink id="lnkAdobe" 
+                                               styleClass="no-decor"
+                                               title="#{campos.BotaoAdobe}" 
+                                               immediate="true"
+                                               action="#{cargoBean.adobeCargo()}"
+                                               >
+                                    <h:graphicImage id="giAdobe" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Adobe.png"
+                                                    alt="#{campos.BotaoAdobe}" 
+                                                    height="32" 
+                                                    width="32"/>
+                                </h:commandLink>
+                            </td>
+                            <td style="width:20px;">
+                            </td>
+                            <td>
+                                <h:commandLink  id="lnkImpressao" 
+                                                styleClass="no-decor"
+                                                title="#{campos.BotaoImpressao}"
+                                                immediate="true"
+                                                action="#{cargoBean.impressaoCargo()}"
+                                                onclick="window.print();
+                                                        return false;"
+                                                disabled="false">
+                                    <h:graphicImage id="giImpressao" 
+                                                    value="#{pageContext.request.contextPath}/imagens/final/Printer.png"
+                                                    alt="#{campos.BotaoImpressao}" 
+                                                    height="32" width="32"/>
+                                </h:commandLink>
+                            </td>
+                        </tr>
+                    </table>
+                </div>                
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>		

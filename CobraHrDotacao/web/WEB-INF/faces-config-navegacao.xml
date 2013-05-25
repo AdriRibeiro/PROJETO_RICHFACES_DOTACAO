@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.1"
+              xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>efetuarLogin</from-outcome>
+            <to-view-id>/formulario/formLogin.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/formulario/formLogin.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>sucessoLogin</from-outcome>
+            <to-view-id>/formulario/formMenu.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>falhaLogin</from-outcome>
+            <to-view-id>/formulario/formLogin.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+	
+    <navigation-rule>
+        <from-view-id>/formulario/formMenu.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>retornarLogin</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>        
+        <navigation-case>
+            <from-outcome>mostrarCargo</from-outcome>
+            <to-view-id>/consulta/consultaCargo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>mostrarCentroResponsabilidade</from-outcome>
+            <to-view-id>/consulta/consultaCentroResponsabilidade.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>mostrarDotacao</from-outcome>
+            <to-view-id>/consulta/consultaDotacao.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>mostrarDotacaoHierarquica</from-outcome>
+            <to-view-id>/consulta/consultaDotHierarquica.xhtml</to-view-id>
+        </navigation-case>        
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/consulta/consultaDotHierarquica.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>retornarHierarquia</from-outcome>
+            <to-view-id>/formulario/formMenu.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sucessoHierarquia</from-outcome>
+            <to-view-id>/formulario/formMenu.xhtml</to-view-id>
+        </navigation-case>                
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/consulta/consultaCargo.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>retornarCargo</from-outcome>
+            <to-view-id>/formulario/formMenu.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sucessoCargo</from-outcome>
+            <to-view-id>/formulario/formMenu.xhtml</to-view-id>
+        </navigation-case>                
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/consulta/consultaCentroResponsabilidade.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>retornarCentroResponsabilidade</from-outcome>
+            <to-view-id>/formulario/formMenu.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sucessoCentroResponsabilidade</from-outcome>
+            <to-view-id>/formulario/formMenu.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>mostrarCentroResponsabilidade</from-outcome>
+            <to-view-id>/consulta/consultaCentroResponsabilidade.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/consulta/consultaDotacao.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>sucessoDotacao</from-outcome>
+            <to-view-id>/consulta/consultaDotacao.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editarDotacao</from-outcome>
+            <to-view-id>/formulario/formDotacao.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>novaDotacao</from-outcome>
+            <to-view-id>/formulario/formDotacao.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>retornarDotacao</from-outcome>
+            <to-view-id>/formulario/formMenu.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/formulario/formDotacao.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>sucessoDotacao</from-outcome>
+            <to-view-id>/consulta/consultaDotacao.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cancelarDotacao</from-outcome>
+            <to-view-id>/consulta/consultaDotacao.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

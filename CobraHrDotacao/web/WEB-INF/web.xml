@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <!-- Configuração da Aplicação Interna -->
+    <context-param>
+        <param-name>database.name</param-name>
+        <param-value>cobraDatabase</param-value>
+    </context-param>
+    <!-- Configuração JavaServer Faces -->
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>client</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
+        <param-value>-1</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.CONFIG_FILES</param-name>
+        <param-value>/WEB-INF/faces-config-navegacao.xml,
+            /WEB-INF/faces-config-campos.xml,
+            /WEB-INF/faces-config-bean.xml,
+            /WEB-INF/faces-config-validacao.xml</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+    <context-param>
+        <param-name>org.richfaces.push.jms.enabled</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <!-- Configuração richfaces     
+        <context-param>
+            <param-name>org.richfaces.resourceOptimization.enabled</param-name>
+            <param-value>true</param-value>
+        </context-param>
+    -->
+    <context-param>
+        <param-name>org.richfaces.skin</param-name>
+        <param-value>#{campos.skin}</param-value>
+    </context-param>
+    <context-param>
+        <param-name>org.richfaces.enableControlSkinning</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/erros/problemasAplicacao.xhtml</location>
+    </error-page>
+</web-app>

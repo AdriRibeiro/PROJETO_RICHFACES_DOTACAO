@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+    <ui:composition template="#{pageContext.request.contextPath}/template/cobra.xhtml">
+        <ui:define name="content">
+            <h:form id="formDotacao">
+                <rich:notifyMessages/>
+                <rich:panel id="panelDotacao" header="#{campos.TituloDoSistema}" rendered="#{loginBean.login.logado}">
+                    <h:panelGrid id="pngDotacao" columns="2">
+                        <h:outputLabel id="outid"
+                                       value="#{campos.campoID}: "
+                                       accesskey="I"
+                                       for="inptId"/>
+                        <h:inputText id="inptId"
+                                     disabled="true"
+                                     value="#{dotacaoBean.dotacao.dotacaoId}"
+                                     size="3"
+                                     maxlength="6"
+                                     required="false"
+                                     requiredMessage="Campo #{campos.campoID}  #{campos.MensagemObrigatorio}">
+                            <f:validateLength minimum="1" maximum="6"/>
+                        </h:inputText>
+                        <h:outputLabel id="outSubcr"
+                                       value="#{campos.campoScr}: "
+                                       accesskey="S"/>
+                        <h:selectOneMenu id="selSubcr"
+                                         disabled="#{dotacaoBean.dotacao.dotacaoId > 0}"
+                                         required="true"
+                                         requiredMessage="Campo #{campos.campoScr} #{campos.MensagemObrigatorio}"
+                                         immediate="true"
+                                         binding="#{dotacaoBean.selSubCr}"
+                                         value="#{dotacaoBean.dotacao.centroResponsabilidade.flexValueId}">
+                            <f:selectItem itemLabel="#{campos.MensagemcomSelect}"/>
+                            <f:selectItems value="#{dotacaoBean.subcrSelectItems}" />
+                            <f:validator validatorId="validaSelect"/>
+                            <f:attribute name="validaSelect" value="formDotacao:selCargo" />
+                        </h:selectOneMenu>
+                        <h:outputLabel id="outCargo"
+                                       value="#{campos.campoCargo}: "
+                                       accesskey="C"
+                                       for="selCargo"/>
+                        <h:selectOneMenu id="selCargo"
+                                         binding="#{dotacaoBean.selCargo}"
+                                         immediate="true"
+                                         required="true"
+                                         requiredMessage="Campo #{campos.campoCargo} #{campos.MensagemObrigatorio}"                                         
+                                         value="#{dotacaoBean.dotacao.cargo.codigo}"
+                                         rendered="true"
+                                         disabled="#{dotacaoBean.dotacao.dotacaoId > 0}">
+                            <f:selectItem itemLabel="#{campos.MensagemcomSelect}"/>
+                            <f:selectItems value="#{dotacaoBean.cargoSelectItems}" />
+                            <f:validator validatorId="validaSelect"/>
+                            <f:attribute name="validaSelect" value="formDotacao:selSubcr" />
+                        </h:selectOneMenu>                    
+                        <h:outputLabel id="outQtdade"
+                                       value="#{campos.campoDotacao}: "
+                                       accesskey="C"
+                                       for="inpDotacao"/>
+                        <h:inputText id="inpDotacao"
+                                     binding="#{dotacaoBean.inputDotacao}"
+                                     value="#{dotacaoBean.dotacao.dotacao}"
+                                     required="true"
+                                     requiredMessage="Campo #{campos.campoDotacao} #{campos.MensagemObrigatorio}"
+                                     immediate="true">
+                            <f:converter converterId="javax.faces.Integer"/>
+                            <f:validator validatorId="validaquantidade"/>
+                            <f:attribute name="validacaoQuantidades" 
+                                         value="formDotacao:inpBloqueio" />
+                        </h:inputText>
+                        <h:outputLabel id="outBloqueio" 
+                                       value="#{campos.campoBloqueio}: "
+                                       accesskey="B"
+                                       for="inpBloqueio"/>
+                        <h:inputText id="inpBloqueio"
+                                     binding="#{dotacaoBean.inputBloqueio}"
+                                     value="#{dotacaoBean.dotacao.bloqueio}"
+                                     required="true"
+                                     requiredMessage="Campo #{campos.campoBloqueio} #{campos.MensagemObrigatorio}"
+                                     immediate="true"> 
+                            <f:converter converterId="javax.faces.Integer"/>
+                            <f:validator validatorId="validaquantidade"/>
+                            <f:attribute name="validacaoQuantidades" 
+                                         value="formDotacao:inpDotacao" />
+                        </h:inputText>
+                        <h:outputLabel id="outDocumento"
+                                       value="#{campos.campoDocumento}: "
+                                       accesskey="D"
+                                       for="inpDocumento"/>
+                        <h:inputText id="inpDocumento" 
+                                     value="#{dotacaoBean.dotacao.documento}"
+                                     size="30"
+                                     required="true"
+                                     requiredMessage="Campo: #{campos.campoDocumento}  #{campos.MensagemCampoRequirido}"
+                                     maxlength="40"/>
+                    </h:panelGrid>
+                    <fieldset>
+                        <legend><h:outputLabel value="#{campos.campoVigencia}"/></legend>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel id="outDataInicio"
+                                           value="#{campos.campoDataInicio}: "
+                                           accesskey="i"
+                                           for="inputstartDate"/>
+                            <a4j:outputPanel id="opcalStartDate" layout="block">
+                                <rich:calendar  id="inputstartDate"
+                                                value="#{dotacaoBean.dotacao.effectiveStartDate}"
+                                                inputSize="10"
+                                                datePattern="#{campos.Datapattern}"
+                                                disabled="true"
+                                                requiredMessage="#{campos.MensagemDataTermino}"
+                                                locale="#{campos.timeZone}">
+                                    <f:convertDateTime pattern="#{padrao.Datapattern}" />
+                                </rich:calendar>
+                            </a4j:outputPanel>
+
+                            <h:outputLabel id="outDataTermino"
+                                           value="#{campos.campoDataTermino}: "
+                                           accesskey="i"
+                                           for="inputendDate"/>
+                            <a4j:outputPanel id="opcalEndDate" layout="block">
+                                <rich:calendar  id="inputendDate"
+                                                value="#{dotacaoBean.dotacao.effectiveEndDate}"
+                                                inputSize="10"
+                                                datePattern="#{campos.Datapattern}"
+                                                disabled="true"
+                                                requiredMessage="#{campos.MensagemDataTermino}"
+                                                locale="#{campos.timeZone}">
+                                    <f:convertDateTime pattern="#{padrao.Datapattern}" />
+                                </rich:calendar>
+                            </a4j:outputPanel>
+                        </h:panelGrid>
+                    </fieldset>
+                    <table>
+                        <tr>
+                            <td>
+                                <h:commandButton id="btnSalvar"
+                                                 value="#{campos.BotaoSalvar}"
+
+                                                 action="#{dotacaoBean.salvar()}"
+                                                 rendered="true" />
+                            </td>
+                            <td class="intervalo"></td>
+                            <td> 
+                                <h:commandButton id="btnLimpar"
+                                                 value="#{campos.BotaoLimpar}"
+                                                 disabled="#{dotacaoBean.dotacao.dotacaoId > 0}"
+                                                 type="reset"/>
+                            </td>
+                            <td class="intervalo"></td>
+                            <td>
+                                <h:commandButton id="btnCancelar"
+                                                 value="#{campos.BotaoCancelar}"
+                                                 action="#{dotacaoBean.cancelarDotacao()}"/>
+                            </td>
+                            <td class="intervalo"></td>
+                        </tr>
+                    </table>                    
+                </rich:panel>
+
+            </h:form>                
+            <div style="position: absolute; left: 0.0%;top: 123%;font-weight: bold;color: red;font-family: arial, helvetica, sans-serif;font-size: 6pt;">
+                <rich:messages id="msgDotacao"/>
+            </div>
+        </ui:define>
+
+    </ui:composition>
+</html>

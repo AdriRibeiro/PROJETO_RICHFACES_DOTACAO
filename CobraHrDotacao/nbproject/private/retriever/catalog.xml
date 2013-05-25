@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://java.sun.com/jsp/jstl/core" uri="www.oracle.com/technetwork/java/index.html"/>
+    <system systemId="http://richfaces.org/a4j" uri="www.jboss.org/richfaces/index"/>
+    <system systemId="http://java.sun.com/jsp/jstl/functions" uri="www.oracle.com/technetwork/java/index.html"/>
+    <system systemId="http://www.w3.org/1999/xhtml" uri="www.w3.org/1999/xhtml/index.xml"/>
+</catalog>
