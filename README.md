@@ -16,3 +16,5 @@ Critérios relavantes para a observancia do Projeto.
 5) Utilização do SFLOG.
 
 
+Ver publicação na Wiki.
+
